@@ -47,6 +47,7 @@ class RightsStatement extends Uri
     {
         $select = new Select('rights-statement');
         $select
+            ->setAttribute('data-value-key', '@id')
             ->setEmptyOption('Select Below')
             ->setValueOptions($this->statements);
         return $view->formSelect($select);
