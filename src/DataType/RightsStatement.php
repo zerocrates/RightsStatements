@@ -37,6 +37,10 @@ class RightsStatement extends Uri
             'No Known Copyright',
     ];
 
+    public function getName()
+    {
+        return 'rights_statement';
+    }
 
     public function getLabel()
     {
@@ -63,7 +67,7 @@ class RightsStatement extends Uri
     {
         $uri = $valueObject['@id'];
         if (isset($this->statements[$uri])) {
-            $valueObject['o:uri_label'] = $this->statements[$uri];
+            $valueObject['o:label'] = $this->statements[$uri];
         }
         parent::hydrate($valueObject, $value, $adapter);
     }
