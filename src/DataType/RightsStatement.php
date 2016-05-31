@@ -47,7 +47,7 @@ class RightsStatement extends Uri
         return 'Rights Statement';
     }
 
-    public function getTemplate(PhpRenderer $view)
+    public function form(PhpRenderer $view)
     {
         $select = new Select('rights-statement');
         $select
