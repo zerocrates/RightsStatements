@@ -33,6 +33,8 @@ class RightsStatement extends Uri
             'No Copyright - United States',
         'http://rightsstatements.org/vocab/CNE/1.0/' =>
             'Copyright Not Evaluated',
+        'http://rightsstatements.org/vocab/UND/1.0/' =>
+            'Copyright Undetermined',
         'http://rightsstatements.org/vocab/NKC/1.0/' =>
             'No Known Copyright',
     ];
