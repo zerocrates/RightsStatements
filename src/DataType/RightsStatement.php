@@ -2,6 +2,7 @@
 namespace RightsStatements\DataType;
 
 use Omeka\Api\Adapter\AbstractEntityAdapter;
+use Omeka\Api\Representation\ValueRepresentation;
 use Omeka\DataType\Uri;
 use Omeka\Entity\Value;
 use Zend\Form\Element\Select;
@@ -72,5 +73,36 @@ class RightsStatement extends Uri
             $valueObject['o:label'] = $this->statements[$uri];
         }
         parent::hydrate($valueObject, $value, $adapter);
+    }
+
+    public function render(PhpRenderer $view, ValueRepresentation $value)
+    {
+        $hyperlink = $view->plugin('hyperlink');
+        $escape = $view->plugin('escapeHtml');
+
+        $uri = $value->uri();
+        $uriLabel = $value->value();
+
+        $imageAsset = $this->getImgAsset($uri);
+        if ($imageAsset) {
+            $content = sprintf(
+                '<img src="%s" alt="%s" class="rights-statements-img" style="height: 4em">',
+                $escape($view->assetUrl($imageAsset, 'RightsStatements')),
+                $escape($uriLabel)
+            );
+        } else {
+            $content = $escape($uriLabel);
+        }
+        return $hyperlink->raw($content, $uri, ['class' => 'rights-statements-link']);
+    }
+
+    private function getImgAsset($statementUri)
+    {
+        preg_match('#^http://rightsstatements.org/vocab/([A-Za-z-]+)/1.0/$#', $statementUri, $matches);
+        if (!$matches) {
+            return null;
+        }
+        $statementId = $matches[1];
+        return sprintf('img/blue-text/%s.svg', $statementId);
     }
 }
