@@ -5,8 +5,8 @@ use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Representation\ValueRepresentation;
 use Omeka\DataType\Uri;
 use Omeka\Entity\Value;
-use Zend\Form\Element\Select;
-use Zend\View\Renderer\PhpRenderer;
+use Laminas\Form\Element\Select;
+use Laminas\View\Renderer\PhpRenderer;
 
 class RightsStatement extends Uri
 {
