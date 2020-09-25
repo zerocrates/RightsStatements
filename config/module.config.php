@@ -2,7 +2,7 @@
 return [
     'data_types' => [
         'invokables' => [
-            'rights_statement' => 'RightsStatements\DataType\RightsStatement'
+            'rights_statement' => 'RightsStatements\DataType\RightsStatement',
         ],
     ],
 ];

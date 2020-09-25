@@ -58,7 +58,6 @@ class RightsStatement extends Uri
             ->setEmptyOption('Select Below')
             ->setValueOptions($this->statements);
         return $view->formSelect($select);
-
     }
 
     public function isValid(array $valueObject)
